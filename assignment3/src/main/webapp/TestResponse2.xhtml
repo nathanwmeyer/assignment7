@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www/w3/org/TR/xhtml/DTD/xhtml-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html">
+		
+<h:head>
+<title>JSF Response Page</title>
+
+<h:outputStylesheet library= "css" name= "table-style.css"  />
+
+</h:head>
+<body>
+
+<ui:composition template="/WEB-INF/layouts/commonLayout.xhtml">
+
+<ui:define name="content">
+
+Hello there, #{flash.user.firstName} #{flash.user.lastName}. Your orders are:
+<h:outputStylesheet name="css/table-style.css"/>
+<h:dataTable value = "#{orders.orderList}" var = "order"
+		styleClass="order-table"
+		headerClass="order-table-header"
+		rowClasses="order-table-odd-row,order-table-even-row">
+    	
+   <h:column>    				
+      <f:facet name = "header">Order Number</f:facet>    				
+      #{order.orderNumber}
+   </h:column>
+   <h:column>
+      <f:facet name = "header">Product Name</f:facet>
+      #{order.productName}
+   </h:column>
+   <h:column>
+      <f:facet name = "header">Price</f:facet>
+      $#{order.price}
+   </h:column>
+   <h:column>
+      <f:facet name = "header">Quantity</f:facet>
+      #{order.quantity}
+   </h:column>
+</h:dataTable>
+
+<h:button value="Go Back" outcome="TestForm" />
+
+</ui:define>
+
+</ui:composition>
+
+</body>
+
+
+
+</html>
