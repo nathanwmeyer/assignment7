@@ -17,7 +17,7 @@
 <h:body>
 Hello there, #{user.firstName} #{user.lastName}. Your orders are:
 <h:outputStylesheet name="css/table-style.css"/>
-<h:dataTable value = "#{orders.orderList}" var = "order"
+<h:dataTable value = "#{formController.service.orders}" var = "order"
 		styleClass="order-table"
 		headerClass="order-table-header"
 		rowClasses="order-table-odd-row,order-table-even-row">

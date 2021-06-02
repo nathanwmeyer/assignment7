@@ -32,4 +32,8 @@ public class FormController {
 		service.test();
 		return "TestResponse2.xhtml";
 	}
+	
+	public OrdersBusinessInterface getService() {
+		return service;
+	}
 }

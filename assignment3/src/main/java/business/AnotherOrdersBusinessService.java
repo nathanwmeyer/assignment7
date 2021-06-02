@@ -4,27 +4,26 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.ejb.Local;
+import beans.*;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Alternative;
 
-import beans.*;
-
 /**
- * Session Bean implementation class OrdersBusinessService
+ * Session Bean implementation class AlternativeOrdersBusinessService
  */
 @Alternative
 @Stateless
 @Local(OrdersBusinessInterface.class)
 @LocalBean
-public class OrdersBusinessService implements OrdersBusinessInterface {
+public class AnotherOrdersBusinessService implements OrdersBusinessInterface {
 
 	List<Order> orders;
 	
     /**
      * Default constructor. 
      */
-    public OrdersBusinessService() {
+    public AnotherOrdersBusinessService() {
         // TODO Auto-generated constructor stub
     	orders = Arrays.asList(
     	        new Order("0001", "Product A", 
@@ -44,7 +43,7 @@ public class OrdersBusinessService implements OrdersBusinessInterface {
      * @see OrdersBusinessInterface#test()
      */
     public void test() {
-    	System.out.println("Hello from the OrdersBusinessService");
+    	System.out.println("Hello from the AnotherOrdersBusinessService");
     }
 
 	@Override
