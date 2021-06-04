@@ -12,7 +12,7 @@ import javax.ejb.TimerService;
 @Stateless
 public class MyTimerService {
 
-	private static final Logger logger = Logger.getLogger("business.TimerService");
+	private static final Logger logger = Logger.getLogger("business.MyTimerService");
 	
 	@Resource
 	TimerService timerService;
