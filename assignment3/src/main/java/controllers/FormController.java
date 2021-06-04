@@ -17,8 +17,8 @@ public class FormController {
 	@Inject
 	OrdersBusinessInterface service;
 	
-	//@EJB
-	//MyTimerService timer;
+	@EJB
+	MyTimerService timer;
 
 	public String onSubmit(User user)//submit user's name using the Submit Button
 	{
@@ -27,7 +27,7 @@ public class FormController {
 		user = context.getApplication().evaluateExpressionGet(context, "#{user}", User.class);
 		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
 		service.test();
-		//timer.setTimer(10000);
+		timer.setTimer(10000);
 		return "TestResponse.xhtml";
 	}
 	public String onFlash(User user)//flash user's name using the Flash Button
