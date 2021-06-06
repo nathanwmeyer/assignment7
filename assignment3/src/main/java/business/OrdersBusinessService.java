@@ -27,16 +27,16 @@ public class OrdersBusinessService implements OrdersBusinessInterface {
     public OrdersBusinessService() {
         // TODO Auto-generated constructor stub
     	orders = Arrays.asList(
-    	        new Order("0001", "Product A", 
-    	                20.00f, 1),
-    	        new Order("0002", "Product B", 
-    	                10.00f, 2),
-    	        new Order("0003", "Product C", 
-    	                5.00f, 4),
-    	        new Order("0004", "Product D", 
-    	                4.00f, 5),
-    	        new Order("0005", "Product E", 
-    	                2.00f, 10)
+    	        new Order("0011", "Product K", 
+    	                35.00f, 10),
+    	        new Order("0012", "Product L", 
+    	                28.00f, 8),
+    	        new Order("0013", "Product M", 
+    	                21.00f, 6),
+    	        new Order("0014", "Product N", 
+    	                14.00f, 4),
+    	        new Order("0015", "Product O", 
+    	                7.00f, 2)
     	        );
     }
 

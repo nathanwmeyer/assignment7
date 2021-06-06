@@ -25,7 +25,7 @@ public class MyTimerService {
     }
     
     public void setTimer(long interval) {
-    	timerService.createTimer(interval, "My Timer");
+    	timerService.createTimer(interval, "MyTimer");
     }
     
     @Timeout

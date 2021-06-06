@@ -36,7 +36,7 @@ public class FormController {
 		user = context.getApplication().evaluateExpressionGet(context, "#{user}", User.class);
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("user", user);
 		service.test();
-		//timer.setTimer(10000);
+		timer.setTimer(10000);
 		return "TestResponse2.xhtml";
 	}
 	
