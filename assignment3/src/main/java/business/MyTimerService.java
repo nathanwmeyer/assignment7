@@ -33,8 +33,8 @@ public class MyTimerService {
     	logger.info("@Timeout has occured at: " + new java.util.Date());
     }
 	
-	@SuppressWarnings("unused")
-	@Schedule(second="*/10", minute="*", hour="0-23", dayOfWeek="Mon-Fri",
+    @SuppressWarnings("unused")
+	@Schedule(second="*/10", minute="*", hour="*", dayOfWeek="*",
       dayOfMonth="*", month="*", year="*", info="MyTimer")
     private void scheduledTimeout(final Timer t) {
         logger.info("@Schedule called at: " + new java.util.Date());
