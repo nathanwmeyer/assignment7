@@ -28,6 +28,7 @@ public class FormController {
 		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
 		service.test();
 		timer.setTimer(10000);
+		getAllOrders();
 		return "TestResponse.xhtml";
 	}
 	public String onFlash(User user)//flash user's name using the Flash Button
@@ -37,10 +38,16 @@ public class FormController {
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("user", user);
 		service.test();
 		timer.setTimer(10000);
+		getAllOrders();
 		return "TestResponse2.xhtml";
 	}
 	
 	public OrdersBusinessInterface getService() {
 		return service;
+	}
+	
+	private void getAllOrders()
+	{
+		
 	}
 }
