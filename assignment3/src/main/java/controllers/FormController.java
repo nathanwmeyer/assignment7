@@ -34,6 +34,8 @@ public class FormController {
 		timer.setTimer(10000);
 		try {
 			getAllOrders();
+			insertOrder();
+			getAllOrders();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -48,6 +50,8 @@ public class FormController {
 		service.test();
 		timer.setTimer(10000);
 		try {
+			getAllOrders();
+			insertOrder();
 			getAllOrders();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -86,6 +90,18 @@ public class FormController {
 			System.out.println("Failiure");
 		} finally {
 			conn.close();
+		}
+	}
+	
+	private void insertOrder() {
+		try {
+			conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "password");
+			Statement statement = conn.createStatement();
+			String sqlCommand = "INSERT INTO testapp.ORDERS(ORDER_NO, PRODUCT_NAME, PRICE, QUANTITY) VALUES('001122334455','This was inserted new', 25.00, 100)";
+			statement.executeUpdate(sqlCommand);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Failiure during Insertion");
 		}
 	}
 }
