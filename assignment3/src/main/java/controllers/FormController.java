@@ -1,5 +1,7 @@
 package controllers;
 
+import java.sql.*;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -13,6 +15,8 @@ import business.OrdersBusinessInterface;
 @ManagedBean 
 @ViewScoped
 public class FormController {
+
+	Connection conn = null;
 	
 	@Inject
 	OrdersBusinessInterface service;
@@ -28,7 +32,12 @@ public class FormController {
 		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
 		service.test();
 		timer.setTimer(10000);
-		getAllOrders();
+		try {
+			getAllOrders();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "TestResponse.xhtml";
 	}
 	public String onFlash(User user)//flash user's name using the Flash Button
@@ -38,7 +47,12 @@ public class FormController {
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("user", user);
 		service.test();
 		timer.setTimer(10000);
-		getAllOrders();
+		try {
+			getAllOrders();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "TestResponse2.xhtml";
 	}
 	
@@ -46,8 +60,32 @@ public class FormController {
 		return service;
 	}
 	
-	private void getAllOrders()
+	private void getAllOrders() throws SQLException
 	{
-		
+		try {
+			conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "password");
+			if (conn != null) System.out.println("Success");
+			
+			Statement statement = conn.createStatement();
+			String sqlCommand = "SELECT * FROM testapp.ORDERS";
+			ResultSet result = statement.executeQuery(sqlCommand);
+			
+			while (result.next()) {
+				int id = result.getInt("ID");
+				String productName = result.getString("PRODUCT_NAME");
+				Float price = result.getFloat("PRICE");
+				System.out.println("ID: " + id);
+				System.out.println("Product Name: " + productName);
+				System.out.println("Price: " + price);
+			}
+			result.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Failiure");
+		} finally {
+			conn.close();
+		}
 	}
 }
