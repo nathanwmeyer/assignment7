@@ -17,15 +17,15 @@ public class Orders implements Serializable{
     
     public Orders() {//default constructor with dummy data
     	orderList = Arrays.asList(
-        new Order("0001", "Product A", 
+        new Order(1,"0001", "Product A", 
                 20.00f, 1),
-        new Order("0002", "Product B", 
+        new Order(2, "0002", "Product B", 
                 10.00f, 2),
-        new Order("0003", "Product C", 
+        new Order(3, "0003", "Product C", 
                 5.00f, 4),
-        new Order("0004", "Product D", 
+        new Order(4, "0004", "Product D", 
                 4.00f, 5),
-        new Order("0005", "Product E", 
+        new Order(5, "0005", "Product E", 
                 2.00f, 10)
         );
     }

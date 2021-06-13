@@ -8,17 +8,20 @@ public class Order {
 	
 	public float price;
 	public int quantity;
+	public int id;
 	
 	public Order()//default constructor
 	{
+		this.id = 0;
 		this.orderNumber = "";
 		this.productName = "";
 		this.price = 0;
 		this.quantity = 0;
 	}
 	
-	public Order(String orderNumber, String productName, float price, int quantity) {//parameterized constructor
+	public Order(int id, String orderNumber, String productName, float price, int quantity) {//parameterized constructor
 		super();
+		this.id = id;
 		this.orderNumber = orderNumber;
 		this.productName = productName;
 		this.price = price;
@@ -49,6 +52,12 @@ public class Order {
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

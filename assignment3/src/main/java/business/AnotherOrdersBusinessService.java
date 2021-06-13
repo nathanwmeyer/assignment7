@@ -26,15 +26,15 @@ public class AnotherOrdersBusinessService implements OrdersBusinessInterface {
     public AnotherOrdersBusinessService() {
         // TODO Auto-generated constructor stub
     	orders = Arrays.asList(
-    	        new Order("0006", "Product F", 
+    	        new Order(6, "0006", "Product F", 
     	                5.00f, 5),
-    	        new Order("0007", "Product G", 
+    	        new Order(7, "0007", "Product G", 
     	                10.00f, 4),
-    	        new Order("0008", "Product H", 
+    	        new Order(8, "0008", "Product H", 
     	                15.00f, 3),
-    	        new Order("0009", "Product I", 
+    	        new Order(9, "0009", "Product I", 
     	                20.00f, 2),
-    	        new Order("0010", "Product J", 
+    	        new Order(10, "0010", "Product J", 
     	                25.00f, 1)
     	        );
     }
