@@ -8,9 +8,11 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import beans.Order;
 import beans.User;
 import business.MyTimerService;
 import business.OrdersBusinessInterface;
+import data.DataAccessInterface;
 
 @ManagedBean 
 @ViewScoped
@@ -20,6 +22,9 @@ public class FormController {
 	
 	@Inject
 	OrdersBusinessInterface service;
+	
+	@EJB
+	DataAccessInterface server;
 	
 	@EJB
 	MyTimerService timer;
@@ -32,14 +37,11 @@ public class FormController {
 		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
 		service.test();
 		timer.setTimer(10000);
-		try {
-			getAllOrders();
-			insertOrder();
-			getAllOrders();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		server.create(new Order(0, "123456789", "new order", 10.00f, 10));
+		server.update(new Order(0, "123456789", "new order", 10.00f, 10), new Order(0, "987654321", "editedOrder", 20.00f, 5));
+		Order findThis = server.findById(11);
+		System.out.println("found item, id: " + findThis.getId() + " order number: " + findThis.getOrderNumber() + " product name: " + findThis.getProductName() + " price: $" + findThis.getPrice() + " quantity: " + findThis.getQuantity());
+		server.delete(new Order(0, "987654321", "editedOrder", 20.00f, 5));
 		return "TestResponse.xhtml";
 	}
 	public String onFlash(User user)//flash user's name using the Flash Button
@@ -49,14 +51,11 @@ public class FormController {
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("user", user);
 		service.test();
 		timer.setTimer(10000);
-		try {
-			getAllOrders();
-			insertOrder();
-			getAllOrders();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		server.create(new Order(0, "123456789", "new order", 10.00f, 10));
+		server.update(new Order(0, "123456789", "new order", 10.00f, 10), new Order(0, "987654321", "editedOrder", 20.00f, 5));
+		Order findThis = server.findById(11);
+		System.out.println("found item, id: " + findThis.getId() + " order number: " + findThis.getOrderNumber() + " product name: " + findThis.getProductName() + " price: $" + findThis.getPrice() + " quantity: " + findThis.getQuantity());
+		server.delete(new Order(0, "987654321", "editedOrder", 20.00f, 5));
 		return "TestResponse2.xhtml";
 	}
 	
@@ -64,44 +63,5 @@ public class FormController {
 		return service;
 	}
 	
-	private void getAllOrders() throws SQLException
-	{
-		try {
-			conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "password");
-			if (conn != null) System.out.println("Success");
-			
-			Statement statement = conn.createStatement();
-			String sqlCommand = "SELECT * FROM testapp.ORDERS";
-			ResultSet result = statement.executeQuery(sqlCommand);
-			
-			while (result.next()) {
-				int id = result.getInt("ID");
-				String productName = result.getString("PRODUCT_NAME");
-				Float price = result.getFloat("PRICE");
-				System.out.println("ID: " + id);
-				System.out.println("Product Name: " + productName);
-				System.out.println("Price: " + price);
-			}
-			result.close();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("Failiure");
-		} finally {
-			conn.close();
-		}
-	}
 	
-	private void insertOrder() {
-		try {
-			conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "password");
-			Statement statement = conn.createStatement();
-			String sqlCommand = "INSERT INTO testapp.ORDERS(ORDER_NO, PRODUCT_NAME, PRICE, QUANTITY) VALUES('001122334455','This was inserted new', 25.00, 100)";
-			statement.executeUpdate(sqlCommand);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Failiure during Insertion");
-		}
-	}
 }
