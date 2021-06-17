@@ -1,14 +1,17 @@
 package beans;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="Order")
 public class Order {
 
 	//list of variables
-	public String orderNumber;
-	public String productName;
+	private String orderNumber;
+	private String productName;
 	
-	public float price;
-	public int quantity;
-	public int id;
+	private float price;
+	private int quantity;
+	private int id;
 	
 	public Order()//default constructor
 	{
