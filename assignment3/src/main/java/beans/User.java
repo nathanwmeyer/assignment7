@@ -1,11 +1,11 @@
 package beans;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.validation.constraints.*;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class User {
 //parameters
 	@NotNull() @Size(min=5, max=15)

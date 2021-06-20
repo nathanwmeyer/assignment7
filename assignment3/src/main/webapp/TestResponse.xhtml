@@ -44,6 +44,8 @@ Hello there, #{user.firstName} #{user.lastName}. Your orders are:
    </h:column>
 </h:dataTable>
 
+<h:form>
+<h:commandButton value="Send Order" action="#{formController.onSendOrder()}"/></h:form>
 <h:button value="Go Back" outcome="TestForm" />
 
 </h:body>

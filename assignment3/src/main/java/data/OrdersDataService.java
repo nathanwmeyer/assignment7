@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.ejb.EJB;
 import javax.ejb.Local;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -22,6 +24,9 @@ import javax.ejb.Stateless;
 public class OrdersDataService implements DataAccessInterface {
 
 	Connection conn = null;
+	
+	@EJB
+	OrdersDataService service;
     /**
      * Default constructor. 
      */

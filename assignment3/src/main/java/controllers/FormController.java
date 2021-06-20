@@ -37,11 +37,7 @@ public class FormController {
 		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
 		service.test();
 		timer.setTimer(10000);
-		server.create(new Order(0, "123456789", "new order", 10.00f, 10));
-		server.update(new Order(0, "123456789", "new order", 10.00f, 10), new Order(0, "987654321", "editedOrder", 20.00f, 5));
-		Order findThis = server.findById(11);
-		System.out.println("found item, id: " + findThis.getId() + " order number: " + findThis.getOrderNumber() + " product name: " + findThis.getProductName() + " price: $" + findThis.getPrice() + " quantity: " + findThis.getQuantity());
-		server.delete(new Order(0, "987654321", "editedOrder", 20.00f, 5));
+		
 		return "TestResponse.xhtml";
 	}
 	public String onFlash(User user)//flash user's name using the Flash Button
@@ -51,11 +47,7 @@ public class FormController {
 		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("user", user);
 		service.test();
 		timer.setTimer(10000);
-		server.create(new Order(0, "123456789", "new order", 10.00f, 10));
-		server.update(new Order(0, "123456789", "new order", 10.00f, 10), new Order(0, "987654321", "editedOrder", 20.00f, 5));
-		Order findThis = server.findById(11);
-		System.out.println("found item, id: " + findThis.getId() + " order number: " + findThis.getOrderNumber() + " product name: " + findThis.getProductName() + " price: $" + findThis.getPrice() + " quantity: " + findThis.getQuantity());
-		server.delete(new Order(0, "987654321", "editedOrder", 20.00f, 5));
+		
 		return "TestResponse2.xhtml";
 	}
 	
@@ -63,5 +55,10 @@ public class FormController {
 		return service;
 	}
 	
-	
+	public String onSendOrder() {
+		
+		Order order = new Order(1, "12345677890", "Test Order", 10.00f, 5);
+		service.sendOrder(order);
+		return "OrderResponse.xhtml";
+	}
 }
