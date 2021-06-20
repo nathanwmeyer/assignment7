@@ -76,7 +76,9 @@ public class OrdersBusinessService implements OrdersBusinessInterface {
 			MessageProducer messageProducer = session.createProducer(queue);
 			TextMessage message1 = session.createTextMessage();
 			ObjectMessage message2 = session.createObjectMessage();
-			message2.setObject((Serializable) order);
+			Order[] orders = new Order[1];
+			orders[0] = order;
+			message2.setObject(orders);
 			message1.setText("This is test message");
 			messageProducer.send(message1);
 			messageProducer.send(message2);
