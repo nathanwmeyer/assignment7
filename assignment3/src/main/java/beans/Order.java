@@ -1,10 +1,20 @@
 package beans;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="Order")
-public class Order {
+public class Order implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 106188419994348335L;
+	
+	/**
+	 * 
+	 */
 	//list of variables
 	private String orderNumber;
 	private String productName;

@@ -44,17 +44,14 @@ public class OrderMessageService implements MessageListener {
         // TODO Auto-generated method stub
     	
 		
-    	if (message instanceof Message) {
-    		try {
-			System.out.println(((TextMessage) message).getText());
-		} catch (JMSException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}}
-    	 else if (message instanceof ObjectMessage)
+    	if (message instanceof Message)
          {
              try {
-              service.create((Order)((ObjectMessage) message).getObject());
+            	 ObjectMessage objectMessage = (ObjectMessage) message;
+                 Order order = new Order();
+                 order = (Order)objectMessage.getObject();
+                 send(order);
+                 System.out.println("ON Message method:  "+ order.getOrderNumber());
 
              }
              catch (JMSException e) {
