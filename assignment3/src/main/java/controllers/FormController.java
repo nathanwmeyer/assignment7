@@ -55,7 +55,7 @@ public class FormController {
 		return service;
 	}
 	
-	public String onSendOrder() {
+	public String onSendOrder() {//send an order and insert it into the database
 		
 		Order order = new Order(1, "12345677890", "Test Order", 10.00f, 5);
 		service.sendOrder(order);

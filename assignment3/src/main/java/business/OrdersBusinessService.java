@@ -51,12 +51,12 @@ public class OrdersBusinessService implements OrdersBusinessInterface {
 	/**
      * @see OrdersBusinessInterface#test()
      */
-    public void test() {
+    public void test() {//console test message
     	System.out.println("Hello from the OrdersBusinessService");
     }
 
 	@Override
-	public List<Order> getOrders() {
+	public List<Order> getOrders() {//return all orders in database
 		// TODO Auto-generated method stub
 		
 		return service.findAll();

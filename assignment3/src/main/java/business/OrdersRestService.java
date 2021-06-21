@@ -23,14 +23,14 @@ public class OrdersRestService {
 	@GET
 	@Path("/getjson")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Order> getOrdersAsJson(){
+	public List<Order> getOrdersAsJson(){//GET a JSON of all stored orders
 		return service.getOrders();
 	}
 	
 	@GET
 	@Path("/getxml")
 	@Produces(MediaType.APPLICATION_XML)
-	public Order[] getOrdersAsXml(){
+	public Order[] getOrdersAsXml(){//GET an XML of all stored orders
 		List<Order> list = service.getOrders();
 		Order[] xml = new Order[list.size()];
 		for (int i =0; i < list.size(); i++)

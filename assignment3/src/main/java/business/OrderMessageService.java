@@ -40,7 +40,7 @@ public class OrderMessageService implements MessageListener {
 	/**
      * @see MessageListener#onMessage(Message)
      */
-    public void onMessage(Message message) {
+    public void onMessage(Message message) {//send a message using a Message-Driven service
         // TODO Auto-generated method stub
     	
 		
@@ -60,7 +60,7 @@ public class OrderMessageService implements MessageListener {
          };
     }
 
-    public void send(Order order) {
+    public void send(Order order) {//place an order using Message-Driven services
     	Connection conn;
 		try {
 			conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "password");
