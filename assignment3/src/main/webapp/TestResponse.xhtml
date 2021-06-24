@@ -15,7 +15,7 @@
 <ui:define name="content">
 
 <h:body>
-Hello there, #{user.firstName} #{user.lastName}. Your orders are:
+Hello there, #{user.firstName}. Your orders are:
 <h:outputStylesheet name="css/table-style.css"/>
 <h:dataTable value = "#{formController.service.orders}" var = "order"
 		styleClass="order-table"
@@ -45,7 +45,8 @@ Hello there, #{user.firstName} #{user.lastName}. Your orders are:
 </h:dataTable>
 
 <h:form>
-<h:commandButton value="Send Order" action="#{formController.onSendOrder()}"/></h:form>
+<h:commandButton value="Send Order" action="#{formController.onSendOrder()}"/>
+<h:commandButton value="Log Out" action="#{formController.onLogoff()}"/></h:form>
 <h:button value="Go Back" outcome="TestForm" />
 
 </h:body>

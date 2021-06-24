@@ -28,27 +28,13 @@ public class FormController {
 	
 	@EJB
 	MyTimerService timer;
-
-	public String onSubmit(User user)//submit user's name using the Submit Button
-	{
-		System.out.println("To check: The user's first name is: " + user.getFirstName() + " and their last name is: " + user.getLastName());
-		FacesContext context = FacesContext.getCurrentInstance();
-		user = context.getApplication().evaluateExpressionGet(context, "#{user}", User.class);
-		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("user", user);
-		service.test();
-		timer.setTimer(10000);
+	
+	public String onLogoff() {
+		//Invalidate the Session to clear the security token
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		
-		return "TestResponse.xhtml";
-	}
-	public String onFlash(User user)//flash user's name using the Flash Button
-	{
-		FacesContext context = FacesContext.getCurrentInstance();
-		user = context.getApplication().evaluateExpressionGet(context, "#{user}", User.class);
-		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("user", user);
-		service.test();
-		timer.setTimer(10000);
-		
-		return "TestResponse2.xhtml";
+		//Redirect to a protected page (so we get a full HTTP Request) to get to Login Page
+		return "TestResponse.xhtml?faces-redirect=true";
 	}
 	
 	public OrdersBusinessInterface getService() {

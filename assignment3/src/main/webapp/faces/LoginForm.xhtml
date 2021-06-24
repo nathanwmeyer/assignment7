@@ -12,16 +12,13 @@
 
 <ui:define name="content">
 
-<h:form>
-<h:outputLabel for="firstName">First Name:</h:outputLabel>
-<h:inputText id="firstName" value="#{user.firstName}" /><br/>
-<h:outputLabel for="lastName">Last Name:</h:outputLabel>
-<h:inputText id="lastName" value="#{user.lastName}" />
-<h:commandButton value="Submit" action="#{formController.onSubmit(user)}"/>
-<h:commandButton value="Flash" action="#{formController.onFlash(user)}"/>
-</h:form>
-
-<h:messages style="color:red;margin;8px"/>
+<div align="center">
+<form method="post" action="j_security_check">
+Username: <h:inputText id="j_username" autocomplete="off" /><br/>
+Password <h:inputSecret id="j_password" autocomplete="off" /><br/>
+<h:commandButton type="submit" value="Submit" />
+</form>
+</div>
 
 </ui:define>
 
