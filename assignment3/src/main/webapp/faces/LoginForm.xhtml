@@ -3,9 +3,9 @@
 		xmlns:ui="http://java.sun.com/jsf/facelets"
 		xmlns:f="http://java.sun.com/jsf/core"
 		xmlns:h="http://java.sun.com/jsf/html">
-<h:head>
+<head>
 <title>Test Form</title>
-</h:head>
+</head>
 <body>
 
 <ui:composition template="/WEB-INF/layouts/commonLayout.xhtml">
@@ -14,8 +14,8 @@
 
 <div align="center">
 <form method="post" action="j_security_check">
-Username: <h:inputText id="j_username" autocomplete="off" /><br/>
-Password <h:inputSecret id="j_password" autocomplete="off" /><br/>
+Username: <input id="j_username" autocomplete="off" /><br/>
+Password <input type="hidden" id="j_password" autocomplete="off" /><br/>
 <h:commandButton type="submit" value="Submit" />
 </form>
 </div>

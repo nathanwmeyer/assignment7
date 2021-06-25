@@ -32,40 +32,39 @@
   <servlet-name>Resteasy Servlet</servlet-name>
   <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
   </servlet>
-  <!--  Security Configuration -->
-  <security-constraint>
+  
+   <!-- Security Configuration -->
+ <security-constraint>
   <display-name>GCU Test Application Security Constraints</display-name>
   <web-resource-collection>
-  <web-resource-name>Protected</web-resource-name>
-  <description>Protect all pages in Web Root</description>
-  <url-pattern>/*</url-pattern>
-  <http-method>GET</http-method>
-  <http-method>POST</http-method>
+   <web-resource-name>Protected</web-resource-name>
+   <description>Protect all pages in Web Root</description>
+   <url-pattern>/*</url-pattern>
+   <http-method>GET</http-method>
+   <http-method>POST</http-method>
   </web-resource-collection>
   <auth-constraint>
-  <description/>
-  <role-name>GcuUser</role-name>
+   <role-name>GcuUser</role-name>
   </auth-constraint>
-  </security-constraint>
-  <security-constraint>
+ </security-constraint>
+ <security-constraint>
   <web-resource-collection>
-  <web-resource-name>Public</web-resource-name>
-  <description>Do not Protect Web Services and JSF Resources</description>
-  <url-pattern>/rest/*</url-pattern>
-  <url-pattern>/OrdersSoapService/*</url-pattern>
-  <url-pattern>/javax.faces.resource/*</url-pattern>
+   <web-resource-name>Public</web-resource-name>
+   <description>Do not Protect Web Services and JSF Resources</description>
+   <url-pattern>/rest/*</url-pattern>
+   <url-pattern>/OrdersSoapService/*</url-pattern>
+   <url-pattern>/javax.faces.resource/*</url-pattern>
   </web-resource-collection>
-  </security-constraint>
-  <login-config>
+ </security-constraint>
+ <login-config>
   <auth-method>FORM</auth-method>
   <realm-name>ApplicationRealm</realm-name>
   <form-login-config>
-  <form-login-page>/faces/LoginForm.xhtml</form-login-page>
-  <form-error-page>/faces/LoginError.xhtml</form-error-page>
+   <form-login-page>/faces/LoginForm.xhtml</form-login-page>
+   <form-error-page>/faces/LoginError.xhtml</form-error-page>
   </form-login-config>
-  </login-config>
-  <security-role>
-  <description/>
+ </login-config>
+ <security-role>
   <role-name>GcuUser</role-name>
-  </security-role>
+ </security-role>
 </web-app>
